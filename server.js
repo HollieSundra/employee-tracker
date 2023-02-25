@@ -1,14 +1,14 @@
-const express = require('express');
+//const express = require('express');
 // Import and require mysql2
 const mysql = require('mysql2');
 const inquirer = require("inquirer");
 
-const PORT = process.env.PORT || 3001;
-const app = express();
+// const PORT = process.env.PORT || 3001;
+//const app = express();
 
 // Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
 
 
 // Connecting to database
@@ -40,7 +40,7 @@ function startScreen() {
 
 //Swtich method to navaigate the startscreen and get to selected area
  .then((response) => {
-    switch (response.userChoice) {
+    switch (response.beginingOption) {
         case "View All Employees":
             allEmployees();
             break;
@@ -55,8 +55,10 @@ function startScreen() {
             break;
         case "Update Employee":
             updateEmployee();
+            break;
         default:
             exit();
+            break;
     }
 });
 }
@@ -80,7 +82,7 @@ const allEmployees = () => {
 const byDepartment = () => {
     const sql = `SELECT department.department_name, employee.first_name, employee.last_name, role.title, role.salary
     FROM employee LEFT JOIN role ON employee.role_id = role.id
-    LEFT JOIN department ON role.department_id = department_id`;
+    LEFT JOIN department ON role.department_id = department.id`;
 
     db.query(sql, (err, rows) => {
         if(err) throw err;
@@ -100,7 +102,7 @@ const createRole = () => {
         rows = rows.map(row => {
             return {
                 key: row.id,
-                value: row.department_id,
+                value: row.department_name,
             }
         });
         await inquirer.prompt([
@@ -131,7 +133,7 @@ const createEmployee = () => {
         if (err) throw err;
         rows = rows.map(row => {
             return {
-                key: row, id,
+                key: row.id,
                 value: row.department_name,
             }
         });
@@ -168,7 +170,7 @@ const updateEmployee = () => {
         if (err) throw err;
         rows = rows.map(row => {
             return {
-                key: row, id,
+                key: row.id,
                 value: row.department_name,
             }
         });
