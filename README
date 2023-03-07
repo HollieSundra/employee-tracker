@@ -1,2 +1,50 @@
+Employee Tracker
+Description
+The Employee Tracker is a command-line application that allows a business owner to manage the departments, roles, and employees in their company by accessing and interacting with employee information stored in a MySQL database.
 
+The application provides the user with options to add, view, update, and delete departments, roles, and employees. The user can also view employees by manager and view the total utilized budget of a department, which is the combined salaries of all employees in that department.
 
+User Story
+As a business owner, I want to be able to view and manage the departments, roles, and employees in my company so that I can organize and plan my business.
+
+Installation
+To install the application, please follow the steps below:
+
+Install Node.js on your computer. Please refer to the official Node.js website for installation instructions.
+Download this repository by running git clone git@github.com:HollieSundra/employee-tracker.git.
+Install required Node.js packages by running npm i in the command line.
+Install MySQL on your computer. Please refer to the MySQL website for installation instructions.
+Change the password in index.js to the root user password of your MySQL DBMS.
+Create the schema of database tables by running all the queries in schema.sql.
+Set up test records yourself or run queries in seed.sql.
+Start the application by running node index or npm start in the command line.
+Usage
+To use the application, open the command line and navigate to the application directory. Run the command node index or npm start.
+
+The user will be presented with a list of options:
+
+View All Employees
+View All Employees By Manager
+Add Employee
+Update Employee Role
+Update Employee Manager
+View All Roles
+Add Role
+View All Departments
+Add Department
+View Department Budget
+Delete Employee
+Delete Role
+Delete Department
+Exit
+To select an option, type the corresponding number and press enter.
+
+License
+This project is licensed under the MIT license.
+
+Credits
+W3Schools SQL tutorials
+Console.table Node.js package
+Inquirer Node.js package
+MySQL Node.js package
+Promise-mysql Node.js package
